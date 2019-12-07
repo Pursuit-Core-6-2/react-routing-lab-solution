@@ -74,6 +74,7 @@ class DonationForm extends React.Component {
             onChange={this.handleAmount}
             value={amount}
           />
+          <span>{amount}</span>
 
           <button>Donate</button>
         </form>
