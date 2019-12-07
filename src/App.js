@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 
 import TopBar from './Components/TopBar'
 import RecentDonations from './Components/RecentDonations'
