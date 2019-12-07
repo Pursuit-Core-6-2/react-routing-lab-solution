@@ -28,6 +28,11 @@ class DonationForm extends React.Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('form submitted')
+  }
+
   // handleName, handleCaption & handleAmount can be replaced by (abstracted)
   // handleInput. We will just need to use handleInput as the OnChange event
   // listener for all our inputs.
@@ -45,7 +50,7 @@ class DonationForm extends React.Component {
     const { name, caption, amount } = this.state;
     return (
       <div className='donation-form section'>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor='name'>Name: </label>
           <input
             id='name'
