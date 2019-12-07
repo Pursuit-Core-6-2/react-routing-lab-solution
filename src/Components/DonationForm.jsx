@@ -29,9 +29,11 @@ class DonationForm extends React.Component {
   }
 
   // handleName, handleCaption & handleAmount can be replaced by (abstracted)
-  // handleInput thanks to the fact that the inputs have a name attribute that
-  // matches the state property name which we use here as a computed property
-  // name
+  // handleInput. We will just need to use handleInput as the OnChange event
+  // listener for all our inputs.
+  // This is possible thanks to the fact that the inputs have a 
+  // name attribute that matches the state property name which we then use as
+  // a computed property name to set the state. 
 
   // handleInput = (event) => {
   //   this.setState({
@@ -73,6 +75,7 @@ class DonationForm extends React.Component {
             value={amount}
           />
 
+          <button>Donate</button>
         </form>
       </div>
     )
