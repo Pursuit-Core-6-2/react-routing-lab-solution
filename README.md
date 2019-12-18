@@ -7,4 +7,3 @@ Install dependencies and run.
 ```
 npm install && npm start
 ```
-
