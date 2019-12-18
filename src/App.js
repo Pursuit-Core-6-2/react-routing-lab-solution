@@ -1,104 +1,33 @@
 import React from 'react';
 import './App.css'
+import { Link, Switch, Route } from 'react-router-dom'
 
-import TopBar from './Components/TopBar'
-import RecentDonations from './Components/RecentDonations'
-import Progress from './Components/Progress'
-import DonationForm from './Components/DonationForm'
+import RandomDog from './Components/RandomDog'
+import RandomDogBreed from './Components/RandomDogBreed'
+import RandomCat from './Components/RandomCat'
+import NotFound from './Components/NotFound'
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      raisedAmount: 0,
-      goalAmount: 5000,
-      donations: [],
-      donationAmount: 5,
-      donorName: '',
-      donationCaption: ''
-    }
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const {
-      donationCaption,
-      donationAmount,
-      donorName,
-      donations,
-      raisedAmount
-    } = this.state
-
-    // Making a copy of the donations array with the 
-    // spread operator.
-    let newDonationsCopy = [...donations];
-
-    newDonationsCopy.push({
-      name: donorName,
-      amount: donationAmount,
-      caption: donationCaption
-    })
-
-    this.setState({
-      donations: newDonationsCopy,
-      raisedAmount: raisedAmount + parseInt(donationAmount),
-
-      donationAmount: 5,
-      donorName: '',
-      donationCaption: ''
-    })
-  }
-
-  handleDonationAmount = (e) => {
-    this.setState({
-      donationAmount: e.target.value
-    })
-  }
-
-  handleDonationCaption = (e) => {
-    this.setState({
-      donationCaption: e.target.value
-    })
-  }
-
-  handleDonorName = (e) => {
-    this.setState({
-      donorName: e.target.value
-    })
-  }
-
   render() {
-    const {
-      raisedAmount,
-      goalAmount,
-      donationAmount,
-      donorName,
-      donationCaption,
-      donations
-    } = this.state
-
     return (
       <div className="App">
-        <TopBar />
-        <RecentDonations
-          donations={donations}
-        />
-        <Progress
-          raisedAmount={raisedAmount}
-          goalAmount={goalAmount}
-        />
-        <DonationForm
-          donationAmount={donationAmount}
-          handleDonationAmount={this.handleDonationAmount}
+        <nav>
+          <Link to="/dog/random">Random Dog</Link>{" "}
+          <Link to="/dog/random/3">Random Dogs</Link>{" "}
+          <Link to="/dog/husky">Random Dog by Breed</Link>{" "}
+          <Link to="/cat/random">Random Cat</Link>{" "}
+          <Link to="/cat/random/3">Random Cats </Link>{" "}
+        </nav>
 
-          donorName={donorName}
-          handleDonorName={this.handleDonorName}
+        <Switch>
+          <Route path="/dog/random/:num" component={RandomDog} />
+          <Route path="/dog/random" component={RandomDog} />
+          <Route path="/dog/:breed" component={RandomDogBreed} />
 
-          donationCaption={donationCaption}
-          handleDonationCaption={this.handleDonationCaption}
-
-          handleSubmit={this.handleSubmit}
-        />
+          <Route path="/cat/random/:num" component={RandomCat} />
+          <Route path="/cat/random/" component={RandomCat} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     );
   }
