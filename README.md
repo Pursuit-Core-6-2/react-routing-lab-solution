@@ -1,6 +1,6 @@
-## React Props Lab Solution
+## React Routing Lab Solution
 
-This is an MVP solution created in class to demonstrate and review passing props in React.
+This is an MVP solution created in class to demonstrate and review routing in React.
 
 Install dependencies and run.
 
